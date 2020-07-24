@@ -1,0 +1,14 @@
+env.cfg
+**/.dropbox_key
+pyenv/**
+docker/**
+*.db
+*.db.md
+.idea
+mysql-data
+data
+notebooks
+tmp-data
+__pycache__
+output_dir/
+venv/
