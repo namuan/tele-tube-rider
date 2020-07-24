@@ -10,7 +10,7 @@ It uses [youtube-dl](https://ytdl-org.github.io/youtube-dl/index.html) so videos
 ### Clone project
 
 ```bash
-git clone https://github.com/namuan/tele-tele-rider.git
+git clone https://github.com/namuan/tele-tube-rider.git
 ```
 
 ### Running it locally
