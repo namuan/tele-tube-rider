@@ -45,13 +45,15 @@ class VideoProvider:
                         timeout=120,
                     )
         except FileIsTooLargeException as e:
-            logging.error("[File Is Too Large] %s", e)
-            self.bot.send_message(self.chat_id, str(e), disable_web_page_preview=True)
-        except Exception as e:
-            logging.error("Something bad happened: %s", e)
-            self.bot.send_message(self.chat_id, str(e), disable_web_page_preview=True)
+            file_too_large_error = "[File Is Too Large] {}".format(str(e))
+            logging.error(file_too_large_error)
+            self.bot.send_message(self.chat_id, file_too_large_error, disable_web_page_preview=True)
+            return False
+        except:
+            return False
 
         notifier.progress_update("Done! ✅")
+        return True
 
     def yt_videos(self):
         if not self.is_yt_playlist():
