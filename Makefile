@@ -29,12 +29,12 @@ deploy: clean ## Copies any changed file to the server
 		${PROJECTNAME}:./${PROJECTNAME}
 
 start: deploy ## Sets up a screen session on the server and start the app
-	ssh ${PROJECTNAME} -C 'bash -l -c "./${PROJECTNAME}/scripts/setup_bot.sh"'
+	ssh ${PROJECTNAME} -C 'bash -l -c "./${PROJECTNAME}/scripts/setup_bot.sh ${PROJECTNAME}"'
 
 stop: deploy ## Stop any running screen session on the server
-	ssh ${PROJECTNAME} -C 'bash -l -c "./${PROJECTNAME}/scripts/stop_bot.sh"'
+	ssh ${PROJECTNAME} -C 'bash -l -c "./${PROJECTNAME}/scripts/stop_bot.sh ${PROJECTNAME}"'
 
-server: deploy ## Sets up dependencies required to run this bot
+server: deploy ## Sets up dependencies required to run this bot
 	ssh ${PROJECTNAME} -C 'bash -l -c "./${PROJECTNAME}/scripts/setup_dependencies.sh"'
 
 ssh: ## SSH into the target VM
