@@ -33,15 +33,17 @@ class MediaRequestHandler:
         ydl.download([self.video_url()])
         downloaded_filename = self.get_downloaded_file_abspath()
         file_size = os.path.getsize(downloaded_filename)
+
+        filename = rename_file(
+            self.get_downloaded_file_abspath(),
+            "{0}".format(self.video_title(), self.video_id()),
+        )
+        logging.info("Downloaded file now saved at: {}".format(filename))
+
         formatted_file_size = format_size(file_size)
         downloaded_video_message = "🔈 File size: {}".format(formatted_file_size)
         self.notifier.progress_update(downloaded_video_message)
         logging.info(downloaded_video_message)
-
-        filename = rename_file(
-            self.get_downloaded_file_abspath(),
-            "{0}_{1}".format(self.video_title(), self.video_id()),
-        )
 
         # if the extracted audio file is larger than 50M
         allowed_file_size = 50

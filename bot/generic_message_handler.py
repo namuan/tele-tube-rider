@@ -21,7 +21,9 @@ class GenericMessageHandler:
         logging.info("Received message: {}".format(video_link))
         video_provider = VideoProvider(bot, cid)
         reply_message = bot.send_message(
-            cid, "Got {}. 👀 at 📼".format(video_link), disable_web_page_preview=True,
+            cid,
+            "Got {}. 👀 at 📼".format(video_link),
+            disable_web_page_preview=True,
         )
         task_completed = video_provider.process(video_link, reply_message.message_id)
         if task_completed:
@@ -35,7 +37,8 @@ class GenericMessageHandler:
                 ),
             )
             bot.delete_message(cid, reply_message.message_id)
-            bot.send_message(cid,
-                             "🆘 Looks like something went wrong. "
-                             "\nWe'll have a look and try to fix this issue."
-                             )
+            bot.send_message(
+                cid,
+                "🆘 Looks like something went wrong. "
+                "\nWe'll have a look and try to fix this issue.",
+            )

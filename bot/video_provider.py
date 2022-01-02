@@ -47,9 +47,11 @@ class VideoProvider:
         except FileIsTooLargeException as e:
             file_too_large_error = "[File Is Too Large] {}".format(str(e))
             logging.error(file_too_large_error)
-            self.bot.send_message(self.chat_id, file_too_large_error, disable_web_page_preview=True)
+            self.bot.send_message(
+                self.chat_id, file_too_large_error, disable_web_page_preview=True
+            )
             return False
-        except:
+        except Exception:
             return False
 
         notifier.progress_update("Done! ✅")

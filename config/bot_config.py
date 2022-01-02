@@ -1,9 +1,8 @@
 import configparser
 import os
+from pathlib import Path
 
-WORKING_DIRECTORY_ABS_PATH = os.path.abspath(".")
-AUDIO_OUTPUT_DIR_NAME = "output_dir"
-AUDIO_OUTPUT_DIR = os.path.join(WORKING_DIRECTORY_ABS_PATH, AUDIO_OUTPUT_DIR_NAME)
+AUDIO_OUTPUT_DIR = Path("~/OutputDir").expanduser().joinpath("social-to-videos")
 OUTPUT_FORMAT = os.path.join(AUDIO_OUTPUT_DIR, "%(id)s.%(ext)s")
 PREFERRED_AUDIO_CODEC = "mp4"
 
